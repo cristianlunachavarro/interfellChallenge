@@ -17,9 +17,19 @@ import {
 	LogoContainer,
 	Logo,
 	InputInfo,
+	InputInfoFields
 } from './Styles';
 
-const Register = ({ username, email, document, phone, password, submit }) => {
+const Register = ({
+	username,
+	email,
+	document,
+	phone,
+	password,
+	submit,
+	handleEnter,
+	emptyFields,
+}) => {
 	return (
 		<Container>
 			<Left>
@@ -37,6 +47,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 									placeholder='cristianluna'
 									onChange={username.handler}
 									ref={username.reference}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -46,6 +57,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 										placeholder='cristianluna'
 										onChange={username.handler}
 										ref={username.reference}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>Este usuario ya esta registrado</InputInfo>
 								</>
@@ -60,6 +72,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 									placeholder='email@ejemplo.com'
 									onChange={email.handler}
 									ref={email.reference}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -69,6 +82,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 										placeholder='email@ejemplo.com'
 										onChange={email.handler}
 										ref={email.reference}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>Este email ya esta registrado</InputInfo>
 								</>
@@ -83,6 +97,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 									placeholder='95099817'
 									onChange={document.handler}
 									ref={document.reference}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -92,6 +107,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 										placeholder='95099817'
 										onChange={document.handler}
 										ref={document.reference}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>Este documento ya esta registrado</InputInfo>
 								</>
@@ -104,6 +120,7 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 								placeholder='1123115566'
 								onChange={phone.handler}
 								value={phone.value}
+								onKeyPress={handleEnter}
 							/>
 						</InputContainer>
 						<InputContainer>
@@ -112,10 +129,14 @@ const Register = ({ username, email, document, phone, password, submit }) => {
 								type='password'
 								value={password.value}
 								onChange={password.handler}
+								onKeyPress={handleEnter}
 							/>
 						</InputContainer>
 					</FormContainer>
-						<Button onClick={submit}>enviar</Button>
+					{emptyFields && (
+						<InputInfoFields>Todos los campos son requeridos</InputInfoFields>
+					)}
+					<Button onClick={submit}>enviar</Button>
 				</Content>
 			</Left>
 			<Right>

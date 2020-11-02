@@ -57,6 +57,12 @@ const LoadContainer = () => {
 		}
 	};
 
+	const handleEnter = (e) =>{
+		if(e.key == 'Enter'){
+			handleSubmit()
+		}
+	}
+
 	return (
 		<Load
 			username={{
@@ -78,6 +84,7 @@ const LoadContainer = () => {
 				message: errors.load,
 			}}
 			submit={handleSubmit}
+			handleEnter={handleEnter}
 		/>
 	);
 };

@@ -11,6 +11,10 @@ export const Container = styled.div`
 
 export const SubContainer = styled.div`
 	width: 50%;
+
+	@media(max-width: 500px) {
+		width: 90%;
+	}
 `;
 
 export const TitleContainer = styled.div`
@@ -21,6 +25,10 @@ export const Title = styled.div`
 	font-size: 60px;
 	text-transform: uppercase;
 	color: white;
+
+	@media(max-width: 500px) {
+		font-size: 26px;
+	}
 `;
 
 export const InfoContainer = styled.div`
@@ -32,7 +40,11 @@ export const InfoContainer = styled.div`
 
 export const InfoTitle = styled.div`
     font-size: 38px;
-    margin-bottom: 2.5%
+    margin-bottom: 2.5%;
+
+	@media(max-width: 500px) {
+		font-size: 22px;
+	}
 `;
 
 export const InfoText = styled.div`
@@ -40,6 +52,10 @@ export const InfoText = styled.div`
 	text-transform: uppercase;
     color: white;
     font-weight: bold;
+
+	@media(max-width: 500px) {
+		font-size: 18px;
+	}
 `;
 
 export const Content = styled.div`

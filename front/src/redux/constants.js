@@ -11,3 +11,5 @@ export const ERRORS_CLEAR = 'ERRORS_CLEAR'
 
 export const CLEAR_ERROR = 'CLEAR_ERROR'
 export const ERROR_LOGIN = 'ERROR_LOGIN'
+
+export const SET_MESSAGE = 'SET_MESSAGE' 

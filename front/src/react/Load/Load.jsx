@@ -11,10 +11,10 @@ import {
 	TitleInput,
 	Input,
 	InputInfo,
-	InvalidInput
+	InvalidInput,
 } from './Styles';
 
-const Load = ({ username, document, amount, submit }) => {
+const Load = ({ username, document, amount, submit, handleEnter }) => {
 	return (
 		<Container>
 			<SubContainer>
@@ -31,6 +31,7 @@ const Load = ({ username, document, amount, submit }) => {
 									type='text'
 									value={username.value}
 									onChange={username.handler}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -39,6 +40,7 @@ const Load = ({ username, document, amount, submit }) => {
 										type='text'
 										value={username.value}
 										onChange={username.handler}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
 										{!username.isValid
@@ -56,6 +58,7 @@ const Load = ({ username, document, amount, submit }) => {
 									type='number'
 									value={document.value}
 									onChange={document.handler}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -64,6 +67,7 @@ const Load = ({ username, document, amount, submit }) => {
 										type='number'
 										value={document.value}
 										onChange={document.handler}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
 										{!username.isValid ? 'Document es requerido' : null}
@@ -79,6 +83,7 @@ const Load = ({ username, document, amount, submit }) => {
 									type='number'
 									value={amount.value}
 									onChange={amount.handler}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -87,6 +92,7 @@ const Load = ({ username, document, amount, submit }) => {
 										type='number'
 										value={amount.value}
 										onChange={amount.handler}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
 										{!username.isValid ? 'Monto es requerido' : null}

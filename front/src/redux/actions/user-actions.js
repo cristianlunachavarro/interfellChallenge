@@ -1,12 +1,25 @@
 import axios from 'axios';
-import {LOGIN_USER, CLEAR_ERROR, ERROR_LOGIN} from '../constants'
+import {LOGIN_USER, CLEAR_ERROR, ERROR_LOGIN, SET_MESSAGE} from '../constants'
 
- const login_user = (user) => { 
+ const login_user = (data) => { 
  return{
 	 type: LOGIN_USER,
-	 user,
+	 user: data.user,
+	 info: {
+		 saldo: data.saldo,
+		 transactions: data.last_transactions
+	 }
  }
 }
+
+const logout_user = () => ({
+	type: LOGIN_USER,
+	user: {},
+	info: {
+		saldo: 0,
+		transactions: []
+	}
+})
 
  const error_login = () => { 
 	return{
@@ -18,6 +31,13 @@ import {LOGIN_USER, CLEAR_ERROR, ERROR_LOGIN} from '../constants'
    export const clear_error = () => { 
 	return{
 		type: CLEAR_ERROR,
+	}
+   }
+
+   const set_message = (msg) => { 
+	return{
+		type: SET_MESSAGE,
+	    message: msg
 	}
    }
 
@@ -43,7 +63,7 @@ export const loginUser = (username, password, next) => (dispatch) =>{
 		password
 	})
 	.then(res => res.data)
-	.then(user => {dispatch(login_user(user)); next()})
+	.then(data => {dispatch(login_user(data)); next()})
 	.catch(() =>{
 		dispatch(error_login())
 	})
@@ -52,7 +72,7 @@ export const loginUser = (username, password, next) => (dispatch) =>{
 export const logoutUser = (next) => (dispatch) =>
   axios
     .post(`http://localhost:1337/api/users/logout`)
-    .then(() => {dispatch(login_user({})); next()});
+    .then(() => {dispatch(logout_user({})); next()});
 
 export const validateUserField = (
 	value,
@@ -72,3 +92,7 @@ export const validateUserField = (
 			setTimeout(() => reference.current.focus(), 100);
 		});
 };
+
+export const setMessage = (message) => (dispatch) => {
+	dispatch(set_message(message))
+}

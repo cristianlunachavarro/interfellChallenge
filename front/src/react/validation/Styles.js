@@ -11,6 +11,10 @@ export const Container = styled.div`
 
 export const SubContainer = styled.div`
 	width: 50%;
+
+	@media(max-width: 500px) {
+		width: 90%;
+	}
 `;
 
 export const Content = styled.div`
@@ -32,6 +36,10 @@ export const Title = styled.div`
 	text-transform: uppercase;
 	color: white;
 	text-align: center;
+
+	@media(max-width: 500px) {
+		font-size: 24px;
+	}
 `;
 
 export const FormContainer = styled.div`
@@ -50,6 +58,10 @@ export const InputContainer = styled.div`
 	align-items: center;
 	width: 60%;
 	margin-bottom: 5%;
+
+	@media(max-width: 500px) {
+		width: 100%;
+	}
 `;
 
 export const TitleInput = styled.div`
@@ -57,6 +69,10 @@ export const TitleInput = styled.div`
 	font-size: 30px;
 	text-transform: uppercase;
 	margin-bottom: 5%;
+
+	@media(max-width: 500px) {
+		font-size: 20px;
+	}
 `;
 
 export const Input = styled.input`
@@ -79,4 +95,5 @@ export const Button = styled.button`
 	border-radius: 5px;
 	padding: 2.5% 5%;
 	margin-top: 5%;
+	cursor: pointer;
 `;

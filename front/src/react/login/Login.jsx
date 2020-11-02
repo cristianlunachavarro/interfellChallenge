@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../assets/Logo.png';
+import { InvalidInput } from '../payment/Styles';
 
 import {
 	Container,
@@ -18,7 +19,7 @@ import {
 	Logo,
 } from './Styles';
 
-const Login = ({ username, password, submit }) => {
+const Login = ({ username, password, submit, handleEnter }) => {
 	return (
 		<Container>
 			<Left>
@@ -33,6 +34,7 @@ const Login = ({ username, password, submit }) => {
 								type='text'
 								placeholder='cristianluna'
 								onChange={username.handler}
+								onKeyPress={handleEnter}
 								value={username.value}
 							/>
 						</InputContainer>
@@ -42,13 +44,13 @@ const Login = ({ username, password, submit }) => {
 								type='password'
 								placeholder='Escriba su contraseña aquí'
 								onChange={password.handler}
+								onKeyPress={handleEnter}
 								value={password.value}
 							/>
 						</InputContainer>
 						<Button onClick={submit}>enviar</Button>
-						{username.message && 
-						<InputInfo>{username.message}</InputInfo>
-						}
+						{username.message && <InputInfo>{username.message}</InputInfo>}
+						{(!username.isValid || !password.isValid) && <InputInfo>{'Usuario y contraseña son requerido'}</InputInfo>}
 					</FormContainer>
 				</Content>
 			</Left>

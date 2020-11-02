@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setMessage } from './user-actions';
 import { MAKE_PAYMENT, LOAD_WALLET, ERROR_LOAD, ERROR_LOAD_CLEAR, VALIDATE_PAYMENT } from '../constants';
 
 const make_payment = (payment) => {
@@ -60,6 +61,7 @@ export const makePayment = (username, document, amount, next) => (dispatch) => {
 		})
 		.then((res) => res.data)
 		.then((payment) => dispatch(make_payment(payment)))
+		// .then(() => {dispatch(setMessage('Revise su mail para confirmar el pago'))})
 		.then(()=> {dispatch(clear_errors()); next(); })
 		.catch((err) => {
 			dispatch(load_errors());

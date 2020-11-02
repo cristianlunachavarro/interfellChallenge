@@ -14,7 +14,7 @@ const NavBar = ({ logout, user, login, regist }) => {
 	return (
 		<Container>
 			<LogoContainer>
-				<Link to={'/acceder'} style={{ 'text-decoration': 'none' }}>
+				<Link to={'/main'} style={{ 'text-decoration': 'none' }}>
 					<Logo>ePayCo</Logo>
 				</Link>
 			</LogoContainer>

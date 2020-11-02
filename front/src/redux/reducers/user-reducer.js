@@ -1,8 +1,12 @@
-import { LOGIN_USER, ERROR_LOGIN, CLEAR_ERROR } from '../constants'
+import { LOGIN_USER, ERROR_LOGIN, CLEAR_ERROR, SET_MESSAGE } from '../constants'
 
 const initialState = {
   user: {},
-  info: {},
+  info: {
+    saldo: 0,
+    transactions: []
+  },
+  message: null,
   error: null
 } 
 
@@ -14,6 +18,8 @@ export default (state = initialState, action) => {
         return {...state, error: action.message }
       case CLEAR_ERROR:
         return {...state, error: null}  
+      case SET_MESSAGE:
+        return {...state, message: action.message}  
       default:
         return state;
     }

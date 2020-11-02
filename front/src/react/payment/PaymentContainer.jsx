@@ -27,7 +27,6 @@ const PaymentContainer = () => {
 		copy.amount = amount !== '';
 
 		setIsValid(copy);
-		console.log(copy);
 
 		return copy.username && copy.document && copy.amount;
 	};
@@ -55,6 +54,12 @@ const PaymentContainer = () => {
 		}
 	};
 
+	const handleEnter = (e) =>{
+		if(e.key == 'Enter'){
+			handleSubmit()
+		}
+	}
+
 	return (
 		<Payment
 			username={{
@@ -76,6 +81,7 @@ const PaymentContainer = () => {
 				message: errors.load,
 			}}
 			submit={handleSubmit}
+			handleEnter={handleEnter}
 		/>
 	);
 };

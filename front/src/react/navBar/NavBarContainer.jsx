@@ -11,7 +11,7 @@ const NavBarContainer = () => {
 	const user = useSelector((state) => state.userReducer.user);
 
 	const handleLogout = () => {
-        const next = () => history.push('acceder')
+        const next = () => history.push('/acceder')
 		dispatch(logoutUser(next));
     };
     const handleLogin = () => {

@@ -14,7 +14,7 @@ import {
 	InputInfo,
 } from './Styles';
 
-const Payment = ({ username, document, amount, submit }) => {
+const Payment = ({ username, document, amount, submit, handleEnter }) => {
 	return (
 		<Container>
 			<SubContainer>
@@ -25,12 +25,13 @@ const Payment = ({ username, document, amount, submit }) => {
 					<FormContainer>
 						<InputContainer>
 							<TitleInput>usuario</TitleInput>
-							{username.isValid && !username.message? (
+							{username.isValid && !username.message ? (
 								<Input
 									placeholder={'ej: cristianluna'}
 									type='text'
 									value={username.value}
 									onChange={username.handler}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -39,6 +40,7 @@ const Payment = ({ username, document, amount, submit }) => {
 										type='text'
 										value={username.value}
 										onChange={username.handler}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
 										{!username.isValid
@@ -56,6 +58,7 @@ const Payment = ({ username, document, amount, submit }) => {
 									type='number'
 									value={document.value}
 									onChange={document.handler}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -64,6 +67,7 @@ const Payment = ({ username, document, amount, submit }) => {
 										type='number'
 										value={document.value}
 										onChange={document.handler}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
 										{!document.isValid ? 'Documento es requerido' : null}
@@ -79,6 +83,7 @@ const Payment = ({ username, document, amount, submit }) => {
 									type='number'
 									value={amount.value}
 									onChange={amount.handler}
+									onKeyPress={handleEnter}
 								/>
 							) : (
 								<>
@@ -87,6 +92,7 @@ const Payment = ({ username, document, amount, submit }) => {
 										type='number'
 										value={amount.value}
 										onChange={amount.handler}
+										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
 										{!amount.isValid ? 'Monto es requerido' : null}

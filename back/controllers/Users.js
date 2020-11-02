@@ -24,15 +24,14 @@ const userLogin = (req, res, next) => {
 	console.log('Usuario logueado');
 	// Retrieve Wallet
 	Wallet.findOne({user: req.user}).then(wallet => {
-		Transaction.find({ wallet: wallet }).then(transactions => {
+		Transaction.find({ wallet: wallet }).limit(5).sort({dateTime: -1}).then(transactions => {
 			res.json({
-				user: user,
+				user: req.user,
 				saldo: wallet.amount,
 				last_transactions: transactions
 			})
 		})
 	})
-	//res.json(req.user);
 };
 
 const userLogout = (req, res, next) => {

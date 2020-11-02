@@ -21,6 +21,21 @@ const RegisterContainer = () => {
 		email: true,
 		document: true,
 	});
+	const [emptyFields, setEmptyFields] = useState(false);
+
+	const validateFields = () => {
+		const val = (
+			username !== '' &&
+			document !== '' &&
+			email !== '' &&
+			phone !== '' &&
+			password !== ''
+		);
+		setEmptyFields(!val);
+		
+		return val;
+	};
+
 	const [timer, setTimer] = useState(null);
 
 	const usernameRef = useRef();
@@ -86,18 +101,26 @@ const RegisterContainer = () => {
 
 	const handleSubmit = () => {
 		const next = () => history.push('/acceder');
-		dispatch(
-			registUser(
-				username,
-				email,
-				String(document),
-				String(phone),
-				password,
-				next
-			)
-		);
+		if (validateFields()) {
+			dispatch(
+				registUser(
+					username,
+					email,
+					String(document),
+					String(phone),
+					password,
+					next
+				)
+			);
+		}
 	};
 
+	const handleEnter = (e) => {
+		if (e.key == 'Enter') {
+			handleSubmit();
+		}
+	};
+	
 	return (
 		<Register
 			username={{
@@ -126,7 +149,9 @@ const RegisterContainer = () => {
 				value: password,
 				handler: handlePassword,
 			}}
+			emptyFields={emptyFields}
 			submit={handleSubmit}
+			handleEnter={handleEnter}
 		/>
 	);
 };

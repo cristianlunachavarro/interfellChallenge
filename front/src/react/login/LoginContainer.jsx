@@ -12,6 +12,19 @@ const LoginContainer = () => {
 
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [isValid, setIsValid] = useState({
+		username: true,
+		password: true,
+	});
+	const validateFields = () => {
+		let copy = { ...isValid };
+
+		copy.username = username !== '';
+		copy.password = password !== '';
+		setIsValid(copy);
+
+		return copy.username && copy.password;
+	};
 
 	const handleUsername = (e) => {
 		const value = e.target.value;
@@ -24,8 +37,16 @@ const LoginContainer = () => {
 	};
 
 	const handleSubmit = () => {
-		const next = () => history.push('/pagar')
-		dispatch(loginUser(username, password, next))
+		const next = () => history.push('/main');
+		if (validateFields()) {
+			dispatch(loginUser(username, password, next));
+		}
+	};
+
+	const handleEnter = (e) => {
+		if (e.key == 'Enter') {
+			handleSubmit();
+		}
 	};
 
 	return (
@@ -33,12 +54,15 @@ const LoginContainer = () => {
 			username={{
 				value: username,
 				handler: handleUsername,
-				message: error
+				message: error,
+				isValid: isValid.username
 			}}
 			password={{
 				value: password,
 				handler: handlePassword,
+				isValid: isValid.password
 			}}
+			handleEnter={handleEnter}
 			submit={handleSubmit}
 		/>
 	);

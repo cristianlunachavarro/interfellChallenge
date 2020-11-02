@@ -10,9 +10,18 @@ export const Container = styled.div`
 	justify-content: center;
 	flex-direction: row;
 	height: 100%;
+
+	@media(max-width: 500px) {
+		flex-direction: column-reverse;
+		justify-content: space-around;
+	}
 `;
 export const Left = styled.div`
 	width: 50%;
+
+	@media(max-width: 500px) {
+		width: 90%;
+	}
 `;
 
 export const Content = styled.div`
@@ -33,6 +42,10 @@ export const Title = styled.div`
 	font-size: 60px;
 	text-transform: uppercase;
 	color: white;
+
+	@media(max-width: 500px) {
+		font-size: 48px;
+	}
 `;
 
 export const FormContainer = styled.div`
@@ -50,6 +63,12 @@ export const InputInfo = styled.span`
 	position: absolute;
 	font-size: 20px;
 	bottom: -17px;
+	
+	@media(max-width: 500px) {
+		font-size: 14px;
+		bottom: -12px;
+		text-align: center;
+	}
 `;
 
 export const InputContainer = styled.div`
@@ -58,6 +77,10 @@ export const InputContainer = styled.div`
 	align-items: center;
 	width: 60%;
 	margin: 2.5%;
+
+	@media(max-width: 500px) {
+		width: 100%;
+	}
 `;
 
 export const TitleInput = styled.div`
@@ -65,6 +88,10 @@ export const TitleInput = styled.div`
 	text-transform: uppercase;
 	color: white;
 	margin-bottom: 5%;
+
+	@media(max-width: 500px) {
+		font-size: 24px;
+	}
 `;
 
 export const Input = styled.input`
@@ -88,6 +115,7 @@ export const Button = styled.button`
 	border-radius: 5px;
 	padding: 2% 5%;
 	margin-top: 5%;
+	cursor: pointer;
 `;
 
 export const Right = styled.div`

@@ -17,6 +17,10 @@ export const Logo = styled.div`
 	color: #7856ff;
 	font-size: 50px;
 	font-weight: bold;
+	
+	@media(max-width: 500px) {
+		font-size: 32px;
+	}
 `;
 
 export const LinksContainer = styled.div`
@@ -26,15 +30,19 @@ export const LinksContainer = styled.div`
 	width: 100%;
 	color: white;
 	text-transform: uppercase;
-
-
+	justify-content: space-around;
 `;
 
 export const LinkI = styled.a`
 	color: white;
 	font-size: 32px;
 	text-transform: uppercase;
-    padding: 0 30%;
+	padding: 0 30%;
+	
+	@media(max-width: 500px) {
+		font-size: 16px;
+		padding: 0 12px;
+	}
 `;
 
 export const LogoutContainer = styled.div`
@@ -53,6 +61,13 @@ export const Logout = styled.div`
     background-color: #A1B9FA;
     border-radius: 10px;
 	padding: 1% 5%;
-	margin: 0 3%
+	margin: 0 3%;
+	cursor: pointer;
+
+	@media(max-width: 500px) {
+		font-size: 14px;
+		padding: 5% 10%;
+		border-radius: 5px;
+	}
 
 `;
