@@ -3,6 +3,7 @@ export const LOGIN_USER = 'LOGIN_USER'
 export const VALIDATE_PAYMENT = 'VALIDATE_PAYMENT'
 export const MAKE_PAYMENT = 'MAKE_PAYMENT'
 export const LOAD_WALLET = 'LOAD_WALLET'
+export const LOAD_INFO = 'LOAD_WALLET_INFO'
 
 //ERRORS
 export const ERROR_LOAD = 'ERROR_LOAD'

@@ -60,8 +60,7 @@ export const FormContainer = styled.div`
 
 export const InputInfo = styled.span`
 	color: white;
-	position: absolute;
-	font-size: 20px;
+	font-size: 24px;
 	bottom: -17px;
 	
 	@media(max-width: 500px) {
@@ -87,7 +86,7 @@ export const TitleInput = styled.div`
 	font-size: 30px;
 	text-transform: uppercase;
 	color: white;
-	margin-bottom: 5%;
+	margin-bottom: 2%;
 
 	@media(max-width: 500px) {
 		font-size: 24px;
@@ -95,7 +94,7 @@ export const TitleInput = styled.div`
 `;
 
 export const Input = styled.input`
-	font-size: 18px;
+	font-size: 22px;
 	border: hidden;
 	width: 100%;
 	border-radius: 20px;
@@ -131,3 +130,7 @@ export const LogoContainer = styled.div``;
 export const Logo = styled.img`
 	width: 90%;
 `;
+
+export const Link = styled.a `
+     color: white;
+`

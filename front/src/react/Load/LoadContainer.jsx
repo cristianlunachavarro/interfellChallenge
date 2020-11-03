@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { loadWallet } from '../../redux/actions/wallet-actions';
+import { loadWallet, clear_errors } from '../../redux/actions/wallet-actions';
 import Load from './Load';
 
 const LoadContainer = () => {
@@ -25,6 +25,11 @@ const LoadContainer = () => {
 			history.push('/acceder');
 		}
 	});
+
+	useEffect(() => {
+		dispatch(clear_errors());
+	}, [])
+
 	const validateFields = () => {
 		let copy = { ...isValid };
 

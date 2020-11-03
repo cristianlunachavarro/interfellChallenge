@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../assets/Logo.png';
+import { Link } from 'react-router-dom';
 import {
 	Container,
 	Left,
@@ -17,7 +18,8 @@ import {
 	LogoContainer,
 	Logo,
 	InputInfo,
-	InputInfoFields
+	InputInfoFields,
+	InputValidInfo
 } from './Styles';
 
 const Register = ({
@@ -59,7 +61,7 @@ const Register = ({
 										ref={username.reference}
 										onKeyPress={handleEnter}
 									/>
-									<InputInfo>Este usuario ya esta registrado</InputInfo>
+									<InputValidInfo>Este usuario ya esta registrado</InputValidInfo>
 								</>
 							)}
 						</InputContainer>
@@ -84,7 +86,7 @@ const Register = ({
 										ref={email.reference}
 										onKeyPress={handleEnter}
 									/>
-									<InputInfo>Este email ya esta registrado</InputInfo>
+									<InputValidInfo>Este email ya esta registrado</InputValidInfo>
 								</>
 							)}
 						</InputContainer>
@@ -109,7 +111,7 @@ const Register = ({
 										ref={document.reference}
 										onKeyPress={handleEnter}
 									/>
-									<InputInfo>Este documento ya esta registrado</InputInfo>
+									<InputValidInfo>Este documento ya esta registrado</InputValidInfo>
 								</>
 							)}
 						</InputContainer>
@@ -132,11 +134,17 @@ const Register = ({
 								onKeyPress={handleEnter}
 							/>
 						</InputContainer>
+						<Button onClick={submit}>enviar</Button>
+						<Link
+							to={'/acceder'}
+							style={{ color: 'white', margin: '2.5% 0', fontSize: '18px' }}
+						>
+							Acedder a tu cuenta
+						</Link>
+						{emptyFields && (
+							<InputInfoFields>Todos los campos son requeridos</InputInfoFields>
+						)}
 					</FormContainer>
-					{emptyFields && (
-						<InputInfoFields>Todos los campos son requeridos</InputInfoFields>
-					)}
-					<Button onClick={submit}>enviar</Button>
 				</Content>
 			</Left>
 			<Right>

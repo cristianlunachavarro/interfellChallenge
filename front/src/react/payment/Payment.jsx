@@ -12,9 +12,11 @@ import {
 	Input,
 	InvalidInput,
 	InputInfo,
+	ErrorMsg
 } from './Styles';
 
-const Payment = ({ username, document, amount, submit, handleEnter }) => {
+const Payment = ({ username, document, amount, submit, handleEnter, error }) => {
+	console.log('error', error);
 	return (
 		<Container>
 			<SubContainer>
@@ -25,7 +27,7 @@ const Payment = ({ username, document, amount, submit, handleEnter }) => {
 					<FormContainer>
 						<InputContainer>
 							<TitleInput>usuario</TitleInput>
-							{username.isValid && !username.message ? (
+							{username.isValid ? (
 								<Input
 									placeholder={'ej: cristianluna'}
 									type='text'
@@ -43,9 +45,7 @@ const Payment = ({ username, document, amount, submit, handleEnter }) => {
 										onKeyPress={handleEnter}
 									/>
 									<InputInfo>
-										{!username.isValid
-											? 'Usuario es requerido'
-											: username.message}
+										{'Usuario es requerido'}
 									</InputInfo>
 								</>
 							)}
@@ -100,6 +100,10 @@ const Payment = ({ username, document, amount, submit, handleEnter }) => {
 								</>
 							)}
 						</InputContainer>
+							{ 
+								error && 
+								<ErrorMsg>{error}</ErrorMsg>
+							}
 						<Button onClick={submit}>enviar</Button>
 					</FormContainer>
 				</Content>

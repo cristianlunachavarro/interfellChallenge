@@ -23,7 +23,7 @@ let transactionSchema = new Schema({
 	},
 	dateTime: {
 		type: Date,
-		default: Date.now()
+		default: Date.now
 	},
 	wallet: {
 		type: Schema.Types.ObjectId,

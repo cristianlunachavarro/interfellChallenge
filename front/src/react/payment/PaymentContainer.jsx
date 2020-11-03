@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { makePayment } from '../../redux/actions/wallet-actions';
 import { useHistory } from 'react-router-dom';
 import Payment from './Payment';
+import { clear_errors } from '../../redux/actions/wallet-actions';
 
 const PaymentContainer = () => {
 	const dispatch = useDispatch();
@@ -35,6 +36,10 @@ const PaymentContainer = () => {
 		history.push('/acceder')
 	}});
 
+	useEffect(() => {
+		dispatch(clear_errors());
+	}, []);
+
 	const handleUsername = (e) => {
 		const value = e.target.value;
 		setUsername(value);
@@ -49,6 +54,7 @@ const PaymentContainer = () => {
 	};
 	const handleSubmit = () => {
 		const next = () => history.push('/validacion-pago');
+		dispatch(clear_errors());
 		if (validateFields()) {
 			dispatch(makePayment(username, String(document), amount, next));
 		}
@@ -66,20 +72,18 @@ const PaymentContainer = () => {
 				value: username,
 				handler: handleUsername,
 				isValid: isValid.username,
-				message: errors.load,
 			}}
 			document={{
 				value: document,
 				handler: handleDocument,
 				isValid: isValid.document,
-				message: errors.load,
 			}}
 			amount={{
 				value: amount,
 				handler: handleAmount,
 				isValid: isValid.amount,
-				message: errors.load,
 			}}
+			error={errors.load || null}
 			submit={handleSubmit}
 			handleEnter={handleEnter}
 		/>

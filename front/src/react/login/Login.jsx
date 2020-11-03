@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../assets/Logo.png';
 import { InvalidInput } from '../payment/Styles';
+import { Link } from 'react-router-dom';
 
 import {
 	Container,
@@ -49,8 +50,16 @@ const Login = ({ username, password, submit, handleEnter }) => {
 							/>
 						</InputContainer>
 						<Button onClick={submit}>enviar</Button>
+						<Link
+							to={'registrarse'}
+							style={{ color: 'white', margin: '2.5% 0', fontSize: '18px' }}
+						>
+							Crear Cuenta
+						</Link>
 						{username.message && <InputInfo>{username.message}</InputInfo>}
-						{(!username.isValid || !password.isValid) && <InputInfo>{'Usuario y contraseña son requerido'}</InputInfo>}
+						{(!username.isValid || !password.isValid) && (
+							<InputInfo>{'Usuario y contraseña son requeridos'}</InputInfo>
+						)}
 					</FormContainer>
 				</Content>
 			</Left>

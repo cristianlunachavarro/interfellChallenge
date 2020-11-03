@@ -1,6 +1,7 @@
 import {
 	MAKE_PAYMENT,
 	LOAD_WALLET,
+	LOAD_INFO,
 	ERROR_LOAD,
 	ERROR_LOAD_CLEAR,
 	ERRORS_CLEAR,
@@ -10,6 +11,8 @@ import {
 const initialState = {
 	payment: {},
 	errors: {},
+	amount: 0,
+	transactions: []
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +23,8 @@ export default (state = initialState, action) => {
 			return { ...state, payment: action.payment };
 		case LOAD_WALLET:
 			return { ...state, payment: action.payment };
+		case LOAD_INFO:
+			return {...state, amount: action.amount, transactions: action.transactions}
 		case ERROR_LOAD:
 			return { ...state, errors: { ...state.errors, load: action.message } };
 		case ERROR_LOAD_CLEAR:

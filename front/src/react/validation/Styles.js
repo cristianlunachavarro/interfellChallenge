@@ -76,7 +76,7 @@ export const TitleInput = styled.div`
 `;
 
 export const Input = styled.input`
-	font-size: 18px;
+	font-size: 22px;
 	border: hidden;
 	width: 100%;
 	border-radius: 20px;

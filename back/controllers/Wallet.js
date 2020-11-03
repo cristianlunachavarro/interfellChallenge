@@ -61,6 +61,11 @@ const chargeWallet = (req, res) => {
 			})
 				.populate('user')
 				.then((wallet) => {
+					if(wallet.amount < req.body.amount){
+						res.status(400);
+						res.send({code: 410})
+						return;
+					}
 					bcrypt.genSalt(10).then((salt) => {
 						const codigo = randomDigits(0, 999999);
 						bcrypt.hash(codigo, salt).then((hash) => {
@@ -86,12 +91,11 @@ const chargeWallet = (req, res) => {
 		})
 		.catch((err) => {
 			res.status(400);
-			res.send({ message: err.message, code: 400 });
+			res.send({ message: err.message, code: 411 });
 		});
 };
 
 const confirmChargeWallet = (req, res) => {
-	console.log('XXXXX', req.body)
 	User.findOne({
 		username: req.body.username,
 	})
@@ -129,4 +133,27 @@ const confirmChargeWallet = (req, res) => {
 		});
 };
 
-module.exports = { reloadWallet, chargeWallet, confirmChargeWallet };
+const getWalletInfo = (req, res, next) => {
+	User.findOne({ 
+		username: req.body.username
+	})
+	.then(user => {
+		Wallet.findOne({user: user})
+		.then(wallet => {
+			Transaction.find({ 
+				wallet: wallet, 
+				status: { $ne: 'pending' } 
+			})
+			.limit(5)
+			.sort({ dateTime: -1 })
+			.then(transactions => {
+				res.json({
+					amount: wallet.amount,
+					transactions
+				})
+			})
+		})
+	})
+}
+
+module.exports = { reloadWallet, chargeWallet, confirmChargeWallet, getWalletInfo };

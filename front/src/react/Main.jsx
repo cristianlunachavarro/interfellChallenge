@@ -23,6 +23,7 @@ const Main = () => {
 				<Route path='/validacion-pago' component={PayValidationContainer} />
 				<Route path='/confirmar-recarga' component={ConfirmLoadContainer} />
 				<Route path='/confirmar-pago' component={ConfirmPaymentContainer} />
+				<Redirect to='/acceder'/>
 			</Switch>
 		</>
 	);

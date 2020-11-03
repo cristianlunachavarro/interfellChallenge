@@ -16,7 +16,7 @@ const sendEmail = (user, response) => {
         subject: 'Condigo de verificación',
         text: "",
         html: `
-        <h2>ePayCo: Confirmacion de pago</h2>
+        <h2>ePayCo: Verificación de pago</h2>
         <div><b>Codigo:</b> <span>${response.codigo}</span></div>
         <div><b>Id Sesion:</b> <span>${response.eid}</span></div>
         `
@@ -45,7 +45,12 @@ const sendConfirmEmail = (user, response) => {
       to: `${user.email}`,
       subject: 'Pago realizado',
       text: "",
-      html: `<h1>${response.mensaje} su saldo en cuenta es de $${response.saldo}</h1>`
+      html:
+      `<h2>ePayCo: Confirmacion de pago</h2>
+      <div><b>Codigo:</b> <span>${response.mensaje}</span></div>
+      <div><b>Tu saldo en cuenta es de:</b> <span>${response.saldo}</span></div>
+      `
+
     }
     transporter.sendMail(mailOptions, function (error) {
       if (error) {

@@ -17,10 +17,10 @@ export const SubContainer = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	width: 80%;
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		flex-direction: column;
 		justify-content: space-around;
-		height: 100%
+		height: 100%;
 	}
 `;
 export const SaldoContainer = styled.div`
@@ -35,7 +35,7 @@ export const SaldoContainer = styled.div`
 	border-radius: 15px;
 	margin-right: 12px;
 
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		height: auto;
 		width: 100%;
 		margin: 12px 0;
@@ -45,17 +45,26 @@ export const Title = styled.div`
 	font-size: 36px;
 	text-transform: uppercase;
 	margin-bottom: 10%;
-	color: #9378FF;
+	color: #9378ff;
 	font-weight: bold;
 	text-align: center;
 `;
 export const Info = styled.div`
 	text-align: center;
 	width: 100%;
-	color: #20BE26;
+	color: #20be26;
+	font-weight: bold;
+	font-size: 50px;
+`;
+
+export const NotTransactions = styled.div`
+	text-align: center;
+	width: 100%;
+	color: black;
 	font-weight: bold;
 	font-size: 34px;
 `;
+
 export const TransactionContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -80,7 +89,7 @@ export const TransactionsContainer = styled.div`
 	height: 100%;
 	justify-content: center;
 
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		width: 100%;
 	}
 `;
@@ -88,7 +97,7 @@ export const TransactionsInfo = styled.div`
 	padding: 1%;
 	font-size: 22px;
 
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		font-size: 16px;
 	}
 `;

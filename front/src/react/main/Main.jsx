@@ -9,7 +9,8 @@ import {
 	TransactionContainer,
 	TransactionsContainer,
 	TransactionsInfo,
-	TransactionsInfoCont
+	TransactionsInfoCont,
+	NotTransactions
 } from './Styles';
 
 const Transaction = ({ transaction }) => {
@@ -27,23 +28,27 @@ const Transaction = ({ transaction }) => {
 	);
 };
 
-const Main = ({ info, user, message }) => {
+const Main = ({ amount, transactions, user, message }) => {
 	return (
 		<Container>
 			{message && <Message>{message}</Message>}
 			<SubContainer>
 				<SaldoContainer>
 					<Title>Saldo actual</Title>
-					<Info>{`$${info.saldo
+					<Info>{`$${amount
 						.toString()
 						.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Info>
 				</SaldoContainer>
 				<TransactionsContainer>
 					<Title>Ultimas transacciones</Title>
 					<TransactionsInfoCont>
-						{info.transactions.map((trs) => (
+						{
+							transactions.length > 0 ?
+							transactions.map((trs) => (
 							<Transaction transaction={trs} />
-						))}
+						)):
+							<NotTransactions>No hay transacciones</NotTransactions>
+						}
 					</TransactionsInfoCont>
 				</TransactionsContainer>
 			</SubContainer>

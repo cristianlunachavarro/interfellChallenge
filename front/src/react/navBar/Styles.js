@@ -33,11 +33,28 @@ export const LinksContainer = styled.div`
 	justify-content: space-around;
 `;
 
-export const LinkI = styled.a`
+export const LinkI = styled.div`
 	color: white;
 	font-size: 32px;
 	text-transform: uppercase;
 	padding: 0 30%;
+	cursor: pointer;
+	font-weight: bold;
+	
+	@media(max-width: 500px) {
+		font-size: 16px;
+		padding: 0 12px;
+	}
+`;
+
+export const LinkD = styled.a`
+	color: #3817bc;
+	font-size: 32px;
+	text-transform: uppercase;
+	padding: 0 30%;
+	text-decoration: none;
+	cursor: none;
+	font-weight: bold;
 	
 	@media(max-width: 500px) {
 		font-size: 16px;

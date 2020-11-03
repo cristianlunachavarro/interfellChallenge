@@ -10,14 +10,14 @@ export const Container = styled.div`
 	height: 100%;
 	align-items: center;
 	justify-content: center;
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		flex-direction: column-reverse;
 		justify-content: space-around;
 	}
 `;
 export const Left = styled.div`
 	width: 50%;
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		width: 90%;
 	}
 `;
@@ -40,7 +40,7 @@ export const Title = styled.div`
 	font-size: 60px;
 	text-transform: uppercase;
 	color: white;
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		font-size: 36px;
 	}
 `;
@@ -49,7 +49,6 @@ export const FormContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border-radius: 20px;
 	width: 100%;
 	padding: 10% 0;
 `;
@@ -61,7 +60,7 @@ export const InputContainer = styled.div`
 	align-items: center;
 	width: 60%;
 	margin: 2.5%;
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		width: 90%;
 	}
 `;
@@ -70,14 +69,14 @@ export const TitleInput = styled.div`
 	font-size: 30px;
 	text-transform: uppercase;
 	color: white;
-	margin-bottom: 5%;
-	@media(max-width: 500px) {
+	margin-bottom: 2%;
+	@media (max-width: 500px) {
 		font-size: 24px;
 	}
 `;
 
 export const Input = styled.input`
-	font-size: 18px;
+	font-size: 22px;
 	border: hidden;
 	width: 100%;
 	border-radius: 20px;
@@ -88,8 +87,7 @@ export const Input = styled.input`
 `;
 
 export const InputInvalid = styled.input`
-	font-size: 18px;
-
+	font-size: 22px;
 	border: 1px solid red;
 	width: 100%;
 	border-radius: 20px;
@@ -99,11 +97,25 @@ export const InputInvalid = styled.input`
 	}
 `;
 
+export const InputValidInfo = styled.span`
+color: white;
+font-size: 20px;
+position: absolute;
+bottom: -25px;
+
+@media(max-width: 500px) {
+	font-size: 14px;
+	bottom: -12px;
+	text-align: center;
+}
+`;
+
 export const InputInfo = styled.small`
 	color: white;
 	position: absolute;
+	font-size: 24px;
 	bottom: -17px;
-	@media(max-width: 500px) {
+	@media (max-width: 500px) {
 		font-size: 14px;
 		bottom: -12px;
 		text-align: center;
@@ -113,13 +125,15 @@ export const InputInfo = styled.small`
 
 export const InputInfoFields = styled.div`
 	color: white;
-	font-size: 18px;
-	@media(max-width: 500px) {
+	font-size: 24px;
+	@media (max-width: 500px) {
 		text-align: center;
 	}
 `;
 
-export const ButtonContainer = styled.div``;
+export const ButtonContainer = styled.div`
+	align-item: center;
+`;
 
 export const Button = styled.button`
 	color: white;
@@ -145,4 +159,8 @@ export const LogoContainer = styled.div``;
 
 export const Logo = styled.div`
 	width: 90%;
+`;
+
+export const Link = styled.a`
+	color: white;
 `;

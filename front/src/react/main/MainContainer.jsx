@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import Main from './Main'
 import {useHistory} from 'react-router-dom'
+import { getWalletInfo } from '../../redux/actions/wallet-actions'
 
 const MainContainer = () => {
     let history = useHistory()
+    const dispatch = useDispatch()
 
    const user = useSelector((state) => state.userReducer.user)
-   const info = useSelector((state) => state.userReducer.info)
+   const amount = useSelector((state) => state.walletReducer.amount)
+   const transactions = useSelector((state) => state.walletReducer.transactions)
    const message = useSelector((state) => state.userReducer.message)
    
    useEffect(()=>{
@@ -16,10 +19,15 @@ const MainContainer = () => {
         }
    })
 
+   useEffect(() => {
+       dispatch(getWalletInfo(user.username))
+   }, [])
+
   return(
       <Main
       user={user}
-      info={info}
+      amount={amount}
+      transactions={transactions}
       message={message}
       />
   )
